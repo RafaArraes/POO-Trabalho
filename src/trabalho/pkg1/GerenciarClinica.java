@@ -10,13 +10,13 @@ public class GerenciarClinica {
     public void imprimirCadastros(ArrayList<Paciente> pacientes){
         System.out.println("---------------Imprimindo cadastros----------------");
         for(Paciente paciente : pacientes){
-            System.out.println("Paciente " + pacientes.indexOf(paciente) +": "+ paciente.getNome());
-            System.out.println("Data de nascimento:" + paciente.getDataNascimento());
-            System.out.println("Endereçp:" + paciente.getEndereco());
-            System.out.println("E-mail:" + paciente.getEmail());
-            System.out.println("Telefone:" + paciente.getTelefone());
-            System.out.println("Tipo de convenio:" + paciente.getTipoConvenio());
-            System.out.println("\t---\t--\t--");
+            System.out.println("\tPaciente " + pacientes.indexOf(paciente) +": "+ paciente.getNome());
+            System.out.println("\tData de nascimento:" + paciente.getDataNascimento());
+            System.out.println("\tEndereçp:" + paciente.getEndereco());
+            System.out.println("\tE-mail:" + paciente.getEmail());
+            System.out.println("\tTelefone:" + paciente.getTelefone());
+            System.out.println("\tTipo de convenio:" + paciente.getTipoConvenio());
+            System.out.println("\t---\t--\t--\n");
         }
     }
     
@@ -24,25 +24,25 @@ public class GerenciarClinica {
         System.out.println("---------------Imprimindo dados----------------");
 
         for (Paciente paciente : pacientes) {
-            System.out.println("Paciente: "+paciente.getNome());
-            System.out.println("Fuma?:" + paciente.isFuma());
-            System.out.println("Bebe?:" + paciente.isBebe());
-            System.out.println("Colesterol?:" + paciente.isColesterol());
-            System.out.println("Diabete?:" + paciente.isDiabete());
-            System.out.println("Doença cardiaca?:" + paciente.isDoencaCardiaca());
-            System.out.print("Cirurgias:");
+            System.out.println("\tPaciente: "+paciente.getNome());
+            System.out.println("\tFuma?:" + paciente.isFuma());
+            System.out.println("\tBebe?:" + paciente.isBebe());
+            System.out.println("\tColesterol?:" + paciente.isColesterol());
+            System.out.println("\tDiabete?:" + paciente.isDiabete());
+            System.out.println("\tDoença cardiaca?:" + paciente.isDoencaCardiaca());
+            System.out.print("\tCirurgias:");
             paciente.getCirurgias().forEach((c) -> {
-                System.out.print("/ " + c);
+                System.out.print(". " + c);
             });
             System.out.println();
-            System.out.print("Alergias:");
+            System.out.print("\tAlergias:");
             paciente.getAlergias().forEach((c) -> {
-                System.out.print("/ " + c);
+                System.out.print(". " + c);
             });
             System.out.println();
-            System.out.println("Diagnostico: " + paciente.getDiagnostico());
-            System.out.println("Tratamento: "+ paciente.getTratamento());
-            System.out.println("\t---\t--\t--");
+            System.out.println("\tDiagnostico: " + paciente.getDiagnostico());
+            System.out.println("\tTratamento: "+ paciente.getTratamento());
+            System.out.println("\t---\t--\t--\n");
         }
     }
     
@@ -53,12 +53,12 @@ public class GerenciarClinica {
     public void imprimirConsultas(ArrayList<Consulta> consultas){
         System.out.println("---------------Imprimindo Consultas----------------");
         for(Consulta consulta : consultas){
-            System.out.println("--------Consulta " + consultas.indexOf(consulta) + "---------");
-            System.out.println("A data desta consulta é " + consulta.getData());
-            System.out.println("O horário da consulta é " + consulta.getHorario());
-            System.out.println("O tipo da consulta é " + consulta.getTipoConsulta());
-            System.out.println("O medico desta consulta é " + consulta.getMedico().getNome());
-            System.out.println("O paciente da consulta é " + consulta.getPaciente().getNome());
+            System.out.println("\t--------Consulta " + consultas.indexOf(consulta) + "---------");
+            System.out.println("\tA data desta consulta é " + consulta.getData());
+            System.out.println("\tO horário da consulta é " + consulta.getHorario());
+            System.out.println("\tO tipo da consulta é " + consulta.getTipoConsulta());
+            System.out.println("\tO medico desta consulta é " + consulta.getMedico().getNome());
+            System.out.println("\tO paciente da consulta é " + consulta.getPaciente().getNome()+"\n");
         }
     }
 }
