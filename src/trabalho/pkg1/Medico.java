@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Medico extends Pessoa {
     private int TotalClienteMes;
-    private Scanner leitura = new Scanner(System.in);
+    private final Scanner leitura = new Scanner(System.in);
     private double salario;
     private String especializacao;
 
