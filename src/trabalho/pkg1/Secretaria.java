@@ -35,6 +35,7 @@ public class Secretaria extends Pessoa {
                                          email, telefone);
         
         pacientes.add(paciente);
+        System.out.println("Paciente cadastrado!");
     }
     
     public void editarPaciente(ArrayList<Paciente> pacientes, Paciente p, String tipoEdicao){
@@ -100,6 +101,7 @@ public class Secretaria extends Pessoa {
         int index;
         index = pacientes.indexOf(p);
         pacientes.remove(index);
+        System.out.println("Paciente excluido!");
     }
     
     public void cadastrarConsulta(ArrayList<Consulta> consultas, Paciente paciente,
@@ -117,6 +119,7 @@ public class Secretaria extends Pessoa {
         Consulta consulta = new Consulta(data, horario, medico, paciente, tipoConsulta);
         
         consultas.add(consulta);
+        System.out.println("Consulta cadastrada!");
     }
     
     public void editarConsulta(ArrayList<Consulta> consultas, Consulta c, String tipoEdicao,
@@ -155,7 +158,7 @@ public class Secretaria extends Pessoa {
                 }
             }
             
-            if(flag == true)
+            if(flag)
                 consultas.get(index).setPaciente(pacientes.get(indice));
             else System.out.println("O paciente que foi digitado não está cadastrado!!");
         }
@@ -173,6 +176,7 @@ public class Secretaria extends Pessoa {
         int index;
         index = consultas.indexOf(c);
         consultas.remove(index);
+        System.out.println("Consulta Excluida!");
     }
     
     public void gerarRelatorio(ArrayList<Consulta> consulta){
