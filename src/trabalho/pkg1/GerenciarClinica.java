@@ -45,11 +45,7 @@ public class GerenciarClinica {
             System.out.println("\t---\t--\t--\n");
         }
     }
-    
-    /*public void relatorioMedicos(){
-        
-    }*/
- 
+
     public void imprimirConsultas(ArrayList<Consulta> consultas){
         System.out.println("---------------Imprimindo Consultas----------------");
         for(Consulta consulta : consultas){
