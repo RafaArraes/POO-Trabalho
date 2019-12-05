@@ -55,10 +55,10 @@ public class TelaClinica {
                         case 2:
                             flag = false;
 
-                            System.out.print("Digite o nome do paciente para fazer a edição:");
-                            name = leitura1.nextLine();
                             System.out.print("Digite qual dados vai ser alterado do paciente:");
                             tipoEdicao = leitura1.nextLine();
+                            System.out.print("Digite o nome do paciente para fazer a edição:");
+                            name = leitura1.nextLine();
 
                             for (Paciente paciente : pacientes) {
                                 if (paciente.getNome().equals(name)) {
@@ -174,7 +174,9 @@ public class TelaClinica {
                     +"[1] Consultando o paciente\n"
                     +"[2] Cadastro do prontuario do paciente\n"
                     +"[3] Editar dados do paciente\n"
-                    +"[4] Relatorio medico\n"
+                    +"[4] Excluir dados do paciente\n"        
+                    +"[5] Excluir prontuario do paciente\n"        
+                    +"[6] Relatorio medico\n"
                     +"-------------------------------------");
                     System.out.print("\nDigite a sua opção:");
                     op = leitura.nextInt();
@@ -209,14 +211,45 @@ public class TelaClinica {
                                 System.out.println("O paciente não está cadastrado");
                             }
                             break;
-
-                        case 4:
+                        case 4:   
+                            flag = false;
+                            System.out.print("Digite o nome do paciente para a exclusao:");
+                            name = leitura1.nextLine();
+                            
+                            for (Paciente paciente : pacientes) {
+                                if (paciente.getNome().equals(name)) {
+                                    index = pacientes.indexOf(paciente);
+                                    flag = true;
+                                }
+                            }
+                            if (flag){
+                               medico1.excluirDados(pacientes, index);
+                            }
+                            break;
+                        case 5:
+                            flag = false;
+                            System.out.print("Digite o nome do paciente para a exclusao:");
+                            name = leitura1.nextLine();
+                            
+                            for (Paciente paciente : pacientes) {
+                                if (paciente.getNome().equals(name)) {
+                                    index = pacientes.indexOf(paciente);
+                                    flag = true;
+                                }
+                            }
+                            if (flag){
+                                medico1.excluirProntuario(pacientes, index);
+                            }
+                            break;
+                        case 6:
                             gerenciador.imprimirDadosMed(pacientes);
-                            System.out.println(medico1.getTotalClienteMes());
                             break;
                     }
                 } while (op != 0);
             }
         }
+        System.out.println("---------------------------"
+                + "Total de cliente atendido: "+ medico1.getTotalClienteMes()
+                + "\n..fechando..");
     }
 }

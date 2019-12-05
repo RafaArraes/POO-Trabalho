@@ -69,6 +69,7 @@ public class Medico extends Pessoa {
         
             paciente.get(index).consultando(fuma, bebe, colesterol, bebe, 
                 colesterol, cirurgias, alergias);   
+            System.out.println("Cadastrado!");
         }else{
             System.out.println("O paciente não esta cadastrado");
         }
@@ -163,7 +164,6 @@ public class Medico extends Pessoa {
                 System.out.println("Dado não encontrado");
                 break;
         }
-        
     }
     
     public void cadastrarProntuario(ArrayList<Paciente> paciente){
@@ -198,11 +198,25 @@ public class Medico extends Pessoa {
             
             paciente.get(index).prontuario(sintomas,diagnostico,tratamento);
             
+            System.out.println("Prontuario cadastrado!");
+            
         }else{
             System.out.println("O paciente não esta cadastrado");
         }
     }
         
+    public void excluirProntuario(ArrayList<Paciente> paciente, int index){
+        ArrayList<String> limpar = new ArrayList<>();
+        paciente.get(index).prontuario(limpar, null, null);
+        System.out.println("Prontuario de "+ paciente.get(index).getNome() +" excluido!");
+    }
+    
+    public void excluirDados(ArrayList<Paciente> paciente, int index){
+        ArrayList<String> limpar = new ArrayList<>();
+        paciente.get(index).consultando(false, false, false, false, false, limpar, limpar);
+        System.out.println("Dados de " + paciente.get(index).getNome() +"excluidos");
+    }
+    
     public double getSalario() {
         return salario;
     }
