@@ -55,10 +55,10 @@ public class TelaClinica {
                         case 2:
                             flag = false;
 
-                            System.out.print("Digite qual dados vai ser alterado do paciente:");
-                            tipoEdicao = leitura1.nextLine();
                             System.out.print("Digite o nome do paciente para fazer a edição:");
                             name = leitura1.nextLine();
+                            System.out.print("Digite qual dados vai ser alterado do paciente:");
+                            tipoEdicao = leitura1.nextLine();
 
                             for (Paciente paciente : pacientes) {
                                 if (paciente.getNome().equals(name)) {
