@@ -1,7 +1,7 @@
 package trabalho.pkg1;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Secretaria extends Pessoa {
@@ -179,7 +179,30 @@ public class Secretaria extends Pessoa {
         System.out.println("Consulta Excluida!");
     }
     
-    public void gerarRelatorio(ArrayList<Consulta> consulta){
+    public void gerarRelatorio(ArrayList<Consulta> consultas){ 
+        LocalDate data = LocalDate.now();
         
+        String mes = Integer.toString(data.getMonthValue()), 
+                dia = Integer.toString(data.getDayOfMonth()+1), 
+                ano = Integer.toString(data.getYear());
+        String aux, date[];
+        
+        System.out.println("-----------Mostrando consultas do dia seguinte-------------");
+        
+        for (Consulta consulta: consultas){
+            aux = consulta.getData();
+            date = aux.split("/");
+            
+            if (date[0].equals(dia) && date[1].equals(mes) && date[2].equals(ano)){
+                
+                System.out.println("\t-----------Consulta" + consultas.indexOf(consulta) + "--------------");
+                System.out.println("\tA data desta consulta é " + consulta.getData());
+                System.out.println("\tO horário da consulta é " + consulta.getHorario());
+                System.out.println("\tO tipo da consulta é " + consulta.getTipoConsulta());
+                System.out.println("\tO medico desta consulta é " + consulta.getMedico().getNome());
+                System.out.println("\tO paciente da consulta é " + consulta.getPaciente().getNome()+"\n");
+               
+            }
+        }
     }
 }

@@ -25,8 +25,6 @@ public class Medico extends Pessoa {
         
         System.out.print("Nome do consultado: ");
         String name = leitura.nextLine();
-
-        this.setTotalClienteMes(this.getTotalClienteMes() + 1);
         
         for (Paciente pacientes: paciente) {
             if (pacientes.getNome().equals(name)) {
@@ -45,10 +43,10 @@ public class Medico extends Pessoa {
             colesterol = leitura.nextLine().equals("S");
         
             String aux;
-            System.out.print("Já fez cirurgias? [S/N]");
+            System.out.print("Já fez cirurgias? [S/N]:");
             cirurg = leitura.nextLine().equals("S");
             if (cirurg){
-                System.out.println("Quais: ");
+                System.out.println("Quais (aperte enter sem digitar para seguir): ");
                 aux = leitura.nextLine();
                 while (!"".equals(aux)){
                     cirurgias.add(aux);
@@ -59,7 +57,7 @@ public class Medico extends Pessoa {
             System.out.print("Possui alergias? [S/N]:");
             alerg = leitura.nextLine().equals("S");
             if (alerg){
-                System.out.println("Quais:");
+                System.out.println("Quais (aperte enter sem digitar para seguir):");
                 aux = leitura.nextLine();
                 while (!"".equals(aux)){
                     alergias.add(aux);
@@ -70,6 +68,7 @@ public class Medico extends Pessoa {
             paciente.get(index).consultando(fuma, bebe, colesterol, bebe, 
                 colesterol, cirurgias, alergias);   
             System.out.println("Cadastrado!");
+            this.setTotalClienteMes(this.getTotalClienteMes()+1);
         }else{
             System.out.println("O paciente não esta cadastrado");
         }
@@ -215,6 +214,21 @@ public class Medico extends Pessoa {
         ArrayList<String> limpar = new ArrayList<>();
         paciente.get(index).consultando(false, false, false, false, false, limpar, limpar);
         System.out.println("Dados de " + paciente.get(index).getNome() +"excluidos");
+    }
+    
+    public void gerarRelatorioMed(ArrayList<Paciente> paciente, ArrayList<Consulta> consultados){
+        System.out.println("------------------------------------\n"
+                + "Pacientes consultados no mes: " + this.getTotalClienteMes());
+        consultados.forEach((consultado) -> {
+        System.out.println("------------------------------------");            
+            int index = paciente.indexOf(consultado.getPaciente());
+            System.out.println("\nPaciente: " + consultado.getPaciente().getNome() +"\n"
+                    + "Receita: " + paciente.get(index).getTratamento() + "\n"
+                    + "Eu, " + consultado.getMedico().getNome() + " confirmo que "
+                    + consultado.getPaciente().getNome()+ " esteve \nem consulta em "
+                    + consultado.getData() + " as "+ consultado.getHorario() +""
+                    + " com um acompanhante");
+        });
     }
     
     public double getSalario() {

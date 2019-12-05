@@ -43,6 +43,7 @@ public class TelaClinica {
                         + "[6] Editar os dados da consulta\n"
                         + "[7] Excluir uma consulta\n"
                         + "[8] Imprimir a(s) consultas\n"
+                        + "[9] Consultas de amanha\n"
                         + "-------------------------------------");
                     System.out.print("\nDigite a sua opção:");
                     op = leitura.nextInt();
@@ -160,6 +161,9 @@ public class TelaClinica {
                         case 8:
                             gerenciador.imprimirConsultas(consultas);
                             break;
+                        case 9:
+                            secretaria.gerarRelatorio(consultas);
+                            break;
 
                     }
                 } while (op != 0);
@@ -176,7 +180,8 @@ public class TelaClinica {
                     +"[3] Editar dados do paciente\n"
                     +"[4] Excluir dados do paciente\n"        
                     +"[5] Excluir prontuario do paciente\n"        
-                    +"[6] Relatorio medico\n"
+                    +"[6] Imprimir dados de consultas\n"
+                    +"[7] Relatorio Medico\n"
                     +"-------------------------------------");
                     System.out.print("\nDigite a sua opção:");
                     op = leitura.nextInt();
@@ -244,12 +249,14 @@ public class TelaClinica {
                         case 6:
                             gerenciador.imprimirDadosMed(pacientes);
                             break;
+                        case 7:
+                            medico1.gerarRelatorioMed(pacientes, consultas);
+                            break;
                     }
                 } while (op != 0);
             }
         }
         System.out.println("---------------------------"
-                + "Total de cliente atendido: "+ medico1.getTotalClienteMes()
                 + "\n..fechando..");
     }
 }
