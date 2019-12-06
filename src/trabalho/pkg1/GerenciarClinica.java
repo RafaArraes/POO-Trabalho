@@ -15,6 +15,7 @@ public class GerenciarClinica {
             System.out.println("\tEndereçp:" + paciente.getEndereco());
             System.out.println("\tE-mail:" + paciente.getEmail());
             System.out.println("\tTelefone:" + paciente.getTelefone());
+            System.out.println("\tCPF:" + paciente.getCpf());
             System.out.println("\tTipo de convenio:" + paciente.getTipoConvenio());
             System.out.println("\t---\t--\t--\n");
         }

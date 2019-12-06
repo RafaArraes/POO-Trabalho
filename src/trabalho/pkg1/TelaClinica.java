@@ -22,14 +22,15 @@ public class TelaClinica {
         
         boolean flag;
         int op,index=-1,conect=0;
-        String cpf, data, horario, nome, tipoEdicao, name;
+        String cpf, data, horario, tipoEdicao;
             
         while (conect != 3){
             System.out.println("-------MENU INICIAL-------\n"
                 + "[0] Secretaria\n"
                 + "[1] Avisar consultas proximas\n"
                 + "[2] Medico\n"
-                + "[3] SAIR\n");
+                + "[3] SAIR");
+            System.out.print("Digite sua opção:");
             conect = leitura.nextInt();
             if (conect == 0) {
                 do {
@@ -58,11 +59,11 @@ public class TelaClinica {
 
                             System.out.print("Digite qual dados vai ser alterado do paciente:");
                             tipoEdicao = leitura1.nextLine();
-                            System.out.print("Digite o nome do paciente para fazer a edição:");
-                            name = leitura1.nextLine();
+                            System.out.print("Digite o cpf do paciente para fazer a edição:");
+                            cpf = leitura1.nextLine();
 
                             for (Paciente paciente : pacientes) {
-                                if (paciente.getNome().equals(name)) {
+                                if (paciente.getCpf().equals(cpf)) {
                                     index = pacientes.indexOf(paciente);
                                     flag = true;
                                 }
@@ -75,13 +76,13 @@ public class TelaClinica {
                             break;
 
                         case 3:
-                            System.out.println("Digite o nome do paciente para excluir");
-                            nome = leitura1.nextLine();
+                            System.out.println("Digite o cpf do paciente para excluir");
+                            cpf = leitura1.nextLine();
                             int indice = 0;
                             boolean flag1 = false;
 
                             for (Paciente paciente : pacientes) {
-                                if (paciente.getNome().equals(nome)) {
+                                if (paciente.getCpf().equals(cpf)) {
                                     indice = pacientes.indexOf(paciente);
                                     flag1 = true;
                                 }
@@ -97,12 +98,12 @@ public class TelaClinica {
                             gerenciador.imprimirCadastros(pacientes);
                             break;
                         case 5:
-                            System.out.print("Digite o nome do paciente que vai fazer a consulta:");
-                            nome = leitura1.nextLine();
+                            System.out.print("Digite o cpf do paciente que vai fazer a consulta:");
+                            cpf = leitura1.nextLine();
                             flag = false;
 
                             for (Paciente paciente : pacientes) {
-                                if (paciente.getNome().equals(nome)) {
+                                if (paciente.getCpf().equals(cpf)) {
                                     index = pacientes.indexOf(paciente);
                                     flag = true;
                                 }
@@ -199,13 +200,13 @@ public class TelaClinica {
                             index = 0;
                             flag = false;
 
-                            System.out.print("Digite o nome do paciente para fazer a edição:");
-                            name = leitura1.nextLine();
+                            System.out.print("Digite o cpf do paciente para fazer a edição:");
+                            cpf = leitura1.nextLine();
                             System.out.print("Digite qual dados vai ser alterado do paciente:");
                             tipoEdicao = leitura1.nextLine();
 
                             for (Paciente paciente : pacientes) {
-                                if (paciente.getNome().equals(name)) {
+                                if (paciente.getCpf().equals(cpf)) {
                                     index = pacientes.indexOf(paciente);
                                     flag = true;
                                 }
@@ -218,11 +219,11 @@ public class TelaClinica {
                             break;
                         case 4:   
                             flag = false;
-                            System.out.print("Digite o nome do paciente para a exclusao:");
-                            name = leitura1.nextLine();
+                            System.out.print("Digite o cpf do paciente para a exclusao:");
+                            cpf = leitura1.nextLine();
                             
                             for (Paciente paciente : pacientes) {
-                                if (paciente.getNome().equals(name)) {
+                                if (paciente.getCpf().equals(cpf)) {
                                     index = pacientes.indexOf(paciente);
                                     flag = true;
                                 }
@@ -233,11 +234,11 @@ public class TelaClinica {
                             break;
                         case 5:
                             flag = false;
-                            System.out.print("Digite o nome do paciente para a exclusao:");
-                            name = leitura1.nextLine();
+                            System.out.print("Digite o cpf do paciente para a exclusao:");
+                            cpf = leitura1.nextLine();
                             
                             for (Paciente paciente : pacientes) {
-                                if (paciente.getNome().equals(name)) {
+                                if (paciente.getCpf().equals(cpf)) {
                                     index = pacientes.indexOf(paciente);
                                     flag = true;
                                 }

@@ -19,10 +19,11 @@ public class Paciente extends Pessoa {
     
     //sets pra private
     public Paciente(String tipoConvenio, String nome, String dataNascimento, String endereco,
-                    String email, String telefone) {
+                    String email, String telefone, String cpf) {
         
         super(nome, dataNascimento, endereco, email, telefone);
         this.tipoConvenio = tipoConvenio;
+        this.cpf = cpf;
     }
 
     public void consultando(boolean fuma,boolean bebe, boolean colesterol, 

@@ -32,7 +32,7 @@ public class Secretaria extends Pessoa {
         cpf = leitura.nextLine();
         
         Paciente paciente = new Paciente(tipoConvenio, nome, dataNascimento, endereco,
-                                         email, telefone);
+                                         email, telefone, cpf);
         
         pacientes.add(paciente);
         System.out.println("Paciente cadastrado!");
@@ -41,6 +41,7 @@ public class Secretaria extends Pessoa {
     public void editarPaciente(ArrayList<Paciente> pacientes, Paciente p, String tipoEdicao){
         int index;
         index = pacientes.indexOf(p);
+        tipoEdicao = tipoEdicao.toLowerCase();
         
         if(tipoEdicao.equals("nome")){
             String novoNome;
@@ -126,6 +127,7 @@ public class Secretaria extends Pessoa {
                                 ArrayList<Paciente> pacientes){
         int index;
         index = consultas.indexOf(c);
+        tipoEdicao = tipoEdicao.toLowerCase();
         
         if(tipoEdicao.equals("data")){
             String novaData;
