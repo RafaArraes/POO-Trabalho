@@ -18,7 +18,7 @@ public class TelaClinica {
        
         GerenciarClinica gerenciador;
         gerenciador = new GerenciarClinica();
-        GerenciadorDeMsg g1 = new GerenciadorDeMsg();
+        GerenciadorDeMsg gerenciadorMSG = new GerenciadorDeMsg();
         
         boolean flag;
         int op,index=-1,conect=0;
@@ -29,7 +29,8 @@ public class TelaClinica {
                 + "[0] Secretaria\n"
                 + "[1] Avisar consultas proximas\n"
                 + "[2] Medico\n"
-                + "[3] SAIR");
+                + "[3] SAIR\n"
+                + "--------------------------");
             System.out.print("Digite sua opção:");
             conect = leitura.nextInt();
             if (conect == 0) {
@@ -57,8 +58,6 @@ public class TelaClinica {
                         case 2:
                             flag = false;
 
-                            System.out.print("Digite qual dados vai ser alterado do paciente:");
-                            tipoEdicao = leitura1.nextLine();
                             System.out.print("Digite o cpf do paciente para fazer a edição:");
                             cpf = leitura1.nextLine();
 
@@ -69,6 +68,8 @@ public class TelaClinica {
                                 }
                             }
                             if (flag) {
+                                System.out.print("Digite qual dados vai ser alterado do paciente:");
+                                tipoEdicao = leitura1.nextLine();
                                 secretaria.editarPaciente(pacientes, pacientes.get(index), tipoEdicao);
                             } else {
                                 System.out.println("O paciente não está cadastrado");
@@ -170,7 +171,7 @@ public class TelaClinica {
                 } while (op != 0);
             }
 
-            else if (conect == 1) g1.enviarMSG(consultas);
+            else if (conect == 1) gerenciadorMSG.enviarMSG(consultas);
 
             else if (conect == 2){
                 do {
@@ -202,9 +203,7 @@ public class TelaClinica {
 
                             System.out.print("Digite o cpf do paciente para fazer a edição:");
                             cpf = leitura1.nextLine();
-                            System.out.print("Digite qual dados vai ser alterado do paciente:");
-                            tipoEdicao = leitura1.nextLine();
-
+                            
                             for (Paciente paciente : pacientes) {
                                 if (paciente.getCpf().equals(cpf)) {
                                     index = pacientes.indexOf(paciente);
@@ -212,6 +211,8 @@ public class TelaClinica {
                                 }
                             }
                             if (flag) {
+                                System.out.print("Digite qual dados vai ser alterado do paciente:");
+                                tipoEdicao = leitura1.nextLine();
                                 medico1.editarDados(pacientes, pacientes.get(index), tipoEdicao);
                             } else {
                                 System.out.println("O paciente não está cadastrado");
@@ -231,6 +232,7 @@ public class TelaClinica {
                             if (flag){
                                medico1.excluirDados(pacientes, index);
                             }
+                            else System.out.println("Paciente nao encontrado!");
                             break;
                         case 5:
                             flag = false;
@@ -246,6 +248,7 @@ public class TelaClinica {
                             if (flag){
                                 medico1.excluirProntuario(pacientes, index);
                             }
+                            else System.out.println("Paciente nao encontrado!");                            
                             break;
                         case 6:
                             gerenciador.imprimirDadosMed(pacientes);

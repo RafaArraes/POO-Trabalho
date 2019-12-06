@@ -19,7 +19,7 @@ public class GerenciadorDeMsg {
             if (date[2].equals(ano) 
                     && (date[1].equals(mes)) 
                     &&(date[0].equals(dia))){
-                System.out.println("Enviando mensagem para " + consulta.getPaciente().getNome()
+                System.out.println("\nEnviando mensagem para " + consulta.getPaciente().getNome()
                     + "\nSobre consulta dia " + dia +" (amanha) às "+consulta.getHorario()+"\n");
             }
         }

@@ -23,15 +23,16 @@ public class Medico extends Pessoa {
         boolean fuma,bebe,colesterol,flag = false, cirurg, alerg;
         int index = 0;
         
-        System.out.print("Nome do consultado: ");
-        String name = leitura.nextLine();
-        
-        for (Paciente pacientes: paciente) {
-            if (pacientes.getNome().equals(name)) {
+        System.out.print("CPF do paciente:");
+        String cpf = leitura.nextLine();
+
+        for (Paciente pacientes : paciente) {
+            if (pacientes.getCpf().equals(cpf)) {
                 index = paciente.indexOf(pacientes);
                 flag = true;
             }
         }
+
         if (flag) {
             System.out.print("Fuma? (S/N):");
             fuma = leitura.nextLine().equals("S");
@@ -53,6 +54,7 @@ public class Medico extends Pessoa {
                     aux = leitura.nextLine();
                 }
             }
+            else cirurgias.add("-");
         
             System.out.print("Possui alergias? [S/N]:");
             alerg = leitura.nextLine().equals("S");
@@ -64,6 +66,7 @@ public class Medico extends Pessoa {
                     aux = leitura.nextLine();
                 }
             }
+            else alergias.add("-");
         
             paciente.get(index).consultando(fuma, bebe, colesterol, bebe, 
                 colesterol, cirurgias, alergias);   
@@ -118,26 +121,30 @@ public class Medico extends Pessoa {
                 System.out.print("Já fez cirurgias? [S/N]");
                 novo = leitura.nextLine().equals("S");
                 if (novo){
-                    System.out.println("Quais: ");
+                    System.out.println("Quais (aperte enter sem digitar para seguir):");
                     newAux = leitura.nextLine();
                     while (!"".equals(newAux)){
                         cirurgias.add(newAux);
                         newAux = leitura.nextLine();
                     }
                 }
+                else cirurgias.add("-");
+                
                 pacientes.get(index).setCirurgias(cirurgias);
                 break;
             case "alergias":
                 System.out.print("Possui alergias? [S/N]:");
                 novo = leitura.nextLine().equals("S");
                 if (novo){
-                    System.out.println("Quais:");
+                    System.out.println("Quais (aperte enter sem digitar para seguir): ");
                     newAux = leitura.nextLine();
                     while (!"".equals(newAux)){
                         alergias.add(newAux);
                         newAux = leitura.nextLine();
                     }
                 }
+                else alergias.add("-");
+                
                 pacientes.get(index).setAlergias(alergias);
                 break;
             case "diagnostico":
@@ -146,7 +153,7 @@ public class Medico extends Pessoa {
                 pacientes.get(index).setDiagnostico(newAux);
                 break;
             case "sintomas":
-                System.out.print("Sintomas: ");
+                System.out.print("Sintomas (aperte enter sem digitar para seguir): ");
                 newAux = leitura.nextLine();
                 while (!"".equals(newAux)) {
                     sintomas.add(newAux);
@@ -171,16 +178,16 @@ public class Medico extends Pessoa {
         String sint, diagnostico,tratamento;
         ArrayList<String> sintomas = new ArrayList<>();
         
-        System.out.print("Nome do consultado: ");
-        String name = leitura.nextLine();
+        System.out.print("CPF do paciente:");
+        String cpf = leitura.nextLine();
 
-        for (Paciente pacientes: paciente) {
-            if (pacientes.getNome().equals(name)) {
+        for (Paciente pacientes : paciente) {
+            if (pacientes.getCpf().equals(cpf)) {
                 index = paciente.indexOf(pacientes);
                 flag = true;
             }
         }
-        
+
         if (flag){
             System.out.print("Sintomas: ");
             sint = leitura.nextLine();
@@ -213,7 +220,7 @@ public class Medico extends Pessoa {
     public void excluirDados(ArrayList<Paciente> paciente, int index){
         ArrayList<String> limpar = new ArrayList<>();
         paciente.get(index).consultando(false, false, false, false, false, limpar, limpar);
-        System.out.println("Dados de " + paciente.get(index).getNome() +"excluidos");
+        System.out.println("Dados de " + paciente.get(index).getNome() +" excluidos");
     }
     
     public void gerarRelatorioMed(ArrayList<Paciente> paciente, ArrayList<Consulta> consultados){
@@ -225,9 +232,10 @@ public class Medico extends Pessoa {
             System.out.println("\nPaciente: " + consultado.getPaciente().getNome() +"\n"
                     + "Receita: " + paciente.get(index).getTratamento() + "\n"
                     + "Eu, " + consultado.getMedico().getNome() + " confirmo que "
-                    + consultado.getPaciente().getNome()+ " esteve \nem consulta em "
-                    + consultado.getData() + " as "+ consultado.getHorario() +""
-                    + " com um acompanhante");
+                    + consultado.getPaciente().getNome()+ " de CPF \n"
+                    + consultado.getPaciente().getCpf() + " esteve em consulta em "
+                    + consultado.getData() + "\nas "+ consultado.getHorario() +""
+                    + " com um acompanhante.");
         });
     }
     

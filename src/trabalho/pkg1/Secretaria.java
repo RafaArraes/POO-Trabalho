@@ -197,7 +197,7 @@ public class Secretaria extends Pessoa {
             
             if (date[0].equals(dia) && date[1].equals(mes) && date[2].equals(ano)){
                 
-                System.out.println("\t-----------Consulta" + consultas.indexOf(consulta) + "--------------");
+                System.out.println("\t-----------Consulta " + consultas.indexOf(consulta) + "--------------");
                 System.out.println("\tA data desta consulta é " + consulta.getData());
                 System.out.println("\tO horário da consulta é " + consulta.getHorario());
                 System.out.println("\tO tipo da consulta é " + consulta.getTipoConsulta());
