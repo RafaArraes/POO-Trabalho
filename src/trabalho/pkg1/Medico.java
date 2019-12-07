@@ -144,10 +144,26 @@ public class Medico extends Pessoa {
                     }
                 }
                 else alergias.add("-");
-                
+         
                 pacientes.get(index).setAlergias(alergias);
                 break;
-            case "diagnostico":
+            default:
+                System.out.println("Dado não encontrado");
+                break;
+        }
+    }
+    
+    public void editarProntuario(ArrayList<Paciente> pacientes, Paciente consultado, String edicao){
+    int index = pacientes.indexOf(consultado);
+        ArrayList<String> cirurgias = new ArrayList<>();
+        ArrayList<String> alergias = new ArrayList<>();
+        ArrayList<String> sintomas = new ArrayList<>();
+        String newAux;
+        boolean novo;
+        edicao = edicao.toLowerCase();
+        
+        if (null != edicao)switch (edicao) {
+          case "diagnostico":
                 System.out.print("Diagnostico: ");
                 newAux = leitura.nextLine();
                 pacientes.get(index).setDiagnostico(newAux);
@@ -168,10 +184,10 @@ public class Medico extends Pessoa {
                 break;            
             default:
                 System.out.println("Dado não encontrado");
-                break;
+                break;  
         }
+       
     }
-    
     public void cadastrarProntuario(ArrayList<Paciente> paciente){
         int index = 0;
         boolean flag = false;

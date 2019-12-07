@@ -7,8 +7,8 @@ public class Consulta {
     private Paciente paciente;
     private String tipoConsulta;
 
-    public Consulta(String data, String horario, Medico medico, Paciente paciente,
-                    String tipoConsulta) {
+    public Consulta(String data, String horario, Medico medico, 
+            Paciente paciente, String tipoConsulta) {
         this.data = data;
         this.horario = horario;
         this.medico = medico;

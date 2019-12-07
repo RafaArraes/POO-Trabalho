@@ -180,10 +180,11 @@ public class TelaClinica {
                     +"[1] Consultando o paciente\n"
                     +"[2] Cadastro do prontuario do paciente\n"
                     +"[3] Editar dados do paciente\n"
-                    +"[4] Excluir dados do paciente\n"        
-                    +"[5] Excluir prontuario do paciente\n"        
-                    +"[6] Imprimir dados de consultas\n"
-                    +"[7] Relatorio Medico\n"
+                    +"[4] Editar prontuario do paciente\n"
+                    +"[5] Excluir dados do paciente\n"        
+                    +"[6] Excluir prontuario do paciente\n"        
+                    +"[7] Imprimir dados de consultas\n"
+                    +"[8] Relatorio Medico\n"
                     +"-------------------------------------");
                     System.out.print("\nDigite a sua opção:");
                     op = leitura.nextInt();
@@ -218,7 +219,28 @@ public class TelaClinica {
                                 System.out.println("O paciente não está cadastrado");
                             }
                             break;
-                        case 4:   
+                        case 4:
+                            index = 0;
+                            flag = false;
+
+                            System.out.print("Digite o cpf do paciente para fazer a edição:");
+                            cpf = leitura1.nextLine();
+                            
+                            for (Paciente paciente : pacientes) {
+                                if (paciente.getCpf().equals(cpf)) {
+                                    index = pacientes.indexOf(paciente);
+                                    flag = true;
+                                }
+                            }
+                            if (flag) {
+                                System.out.print("Digite qual dado vai ser alterado do paciente:");
+                                tipoEdicao = leitura1.nextLine();
+                                medico1.editarProntuario(pacientes, pacientes.get(index), tipoEdicao);
+                            } else {
+                                System.out.println("O paciente não está cadastrado");
+                            }
+                            break;
+                        case 5:   
                             flag = false;
                             System.out.print("Digite o cpf do paciente para a exclusao:");
                             cpf = leitura1.nextLine();
@@ -234,7 +256,7 @@ public class TelaClinica {
                             }
                             else System.out.println("Paciente nao encontrado!");
                             break;
-                        case 5:
+                        case 6:
                             flag = false;
                             System.out.print("Digite o cpf do paciente para a exclusao:");
                             cpf = leitura1.nextLine();
@@ -250,10 +272,10 @@ public class TelaClinica {
                             }
                             else System.out.println("Paciente nao encontrado!");                            
                             break;
-                        case 6:
+                        case 7:
                             gerenciador.imprimirDadosMed(pacientes);
                             break;
-                        case 7:
+                        case 8:
                             medico1.gerarRelatorioMed(pacientes, consultas);
                             break;
                     }
